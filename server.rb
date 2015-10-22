@@ -1,9 +1,13 @@
-require 'sinatra'
-require 'HTTParty'
-require 'JSON'
+require "sinatra/base"
+require "httparty"
+require 'json'
 
-get('/') do
-  data = HTTParty.get("http://www.citibikenyc.com/stations/json")
-  parsed = JSON.parse(data.body)
-  return parsed
+class CitibikeBackEnd < Sinatra::Base
+
+  get('/') do
+    content_type :json
+
+    data = HTTParty.get("http://www.citibikenyc.com/stations/json")
+    JSON.parse(data.body).to_json
+  end
 end
