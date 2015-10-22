@@ -4,7 +4,7 @@ require 'json'
 
 class CitibikeBackEnd < Sinatra::Base
 
-  get('/') do
+  get('/station-status') do
     content_type :json
 
     data = HTTParty.get("http://www.citibikenyc.com/stations/json")
