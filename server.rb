@@ -3,7 +3,7 @@ require "httparty"
 require 'json'
 
 class CitibikeBackEnd < Sinatra::Base
-
+	
   get('/station-status') do
     content_type :json
 
